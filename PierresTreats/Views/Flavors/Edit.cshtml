@@ -15,21 +15,17 @@
 
   @Html.LabelFor(model => model.Name)<br>
   @Html.EditorFor(model => model.Name)<br><p></p>
-  @Html.LabelFor(model => model.Details)<br>
-  <p class="mb-0">@Html.EditorFor(model => model.Details)</p><p></p>
-  <p class="mb-0">@Html.LabelFor(model => model.Status)</p>
-  <p class="mb-0">@Html.DropDownListFor(model => model.Status, new SelectList(Enum.GetValues(typeof(FlavorStatus))), "Select Status")</p>
   <input type="submit"  value="Save" class="btn btn-primary" />
   <br>
   <br>
   
   <ul>
-    @foreach(FlavorMachine join in Model.JoinEntities)
+    @foreach(FlavorTreat join in Model.JoinEntities)
       {
-        <li>@join.Machine.Name
+        <li>@join.Treat.Name
         @using (Html.BeginForm("DeleteJoin", "Flavors"))
         {
-          @Html.Hidden("joinId", @join.FlavorMachineId)
+          @Html.Hidden("joinId", @join.FlavorTreatId)
           <input type="submit" class="btn btn-primary"  value="Delete"/>
         }
         </li>

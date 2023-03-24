@@ -9,6 +9,6 @@ namespace PierresTreats.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public int FlavorId { get; set; }
-    public List<Treat> JoinEntities { get; }
+    public List<FlavorTreat> JoinEntities { get; }
   }
 }

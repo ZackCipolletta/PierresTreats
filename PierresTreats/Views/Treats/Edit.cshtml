@@ -1,0 +1,39 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresTreats.Models;
+@model PierresTreats.Models.Treat
+
+<h1 class="text-center">Edit this Treat</h1>
+<hr>
+<h4>Name: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+
+  @Html.LabelFor(model => model.Name)<br>
+  @Html.EditorFor(model => model.Name)<br><p></p>
+  @Html.LabelFor(model => model.Description)<br>
+  <p class="mb-0">@Html.EditorFor(model => model.Description)</p>
+  <input type="submit"  value="Save" class="btn btn-primary" />
+  <br>
+  <br>
+  
+  <ul>
+    @foreach(FlavorTreat join in Model.JoinEntities)
+      {
+        <li>@join.Flavor.Name
+        @using (Html.BeginForm("DeleteJoin", "Treats"))
+        {
+          @Html.Hidden("joinId", @join.FlavorTreatId)
+          <input type="submit" class="btn btn-primary"  value="Delete"/>
+        }
+        </li>
+      }
+  </ul>
+}
+<br>
+<hr class="my-2">
+<p class="nav">@Html.ActionLink("Back to list", "Index")</p>

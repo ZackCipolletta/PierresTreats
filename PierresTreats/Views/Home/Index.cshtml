@@ -19,7 +19,7 @@
   }
 </ul>
 <br>
-<h4>@Html.ActionLink("Flavors", "Index", "Treats")</h4>
+<h4>@Html.ActionLink("Flavors", "Index", "Flavors")</h4>
 @if (ViewBag.Flavors.Count == 0)
 {
   <p>No flavors have been added yet!</p>
@@ -27,7 +27,8 @@
 <ul>
   @foreach (Flavor flavor in (List<Flavor>)ViewBag.Flavors) //<-- casting to List<T> inorder to use the Html.ActionLink below to avoid error CS1973.
   {
-    <li>@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+    @* <li>@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li> *@
+    <li>@flavor.Name</li>
   }
 </ul>
 <br>
