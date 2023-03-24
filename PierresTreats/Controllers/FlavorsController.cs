@@ -58,13 +58,14 @@ namespace PierresTreats.Controllers
     {
       _db.Flavors.Update(flavor);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Edit", new { id = flavor.FlavorId});
     }
 
     [HttpPost]
-    public ActionResult AddFlavor(Flavor flavor, int treatId)
+    public ActionResult AddTreat(Flavor flavor, int treatId)
     {
 #nullable enable
+      flavor = _db.Flavors.FirstOrDefault(flav => flav.FlavorId == flavor.FlavorId);  
       FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
 #nullable disable
       if (joinEntity == null && treatId != 0)
@@ -73,8 +74,16 @@ namespace PierresTreats.Controllers
         _db.Flavors.Update(flavor);
         _db.SaveChanges();
       }
-      return RedirectToAction("Details", new { id = flavor.FlavorId });
+      return RedirectToAction("Edit", new { id = flavor.FlavorId });
     }
 
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      FlavorTreat joinEntity = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+        _db.FlavorTreats.Remove(joinEntity);
+        _db.SaveChanges();
+      return RedirectToAction("Edit", new { id = joinEntity.FlavorId });
+    }
   }
 }

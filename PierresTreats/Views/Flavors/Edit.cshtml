@@ -35,8 +35,10 @@
 
 <h4>Add a Treat to: @Html.DisplayFor(model => model.Name)</h4>
 <br>
-@using (Html.BeginForm("AddFlavor", "Flavors"))
+@using (Html.BeginForm("AddTreat", "Flavors"))
 {
+
+  @Html.HiddenFor(model => model.FlavorId)
   if((int)@ViewBag.TreatCount == 0)
   {
     <p>No treats have been added yet!</p>
