@@ -6,7 +6,7 @@
 @using PierresTreats.Models
 
 <hr>
-<h4>Treats</h4>
+<h4>@Html.ActionLink("Treats", "Index", "Treats")</h4>
 @if (ViewBag.Treats.Count == 0)
 {
   <p>No Treats have been added yet!</p>
@@ -14,11 +14,12 @@
 <ul>
   @foreach (var treat in (List<Treat>)ViewBag.Treats) //<-- casting to List<T> inorder to use the Html.ActionLink below to avoid error CS1973.
   {
-    <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
+    @* <li>@Html.ActionLink(@treat.Name, "Edit", "Treats", new { id = @treat.TreatId})</li> *@
+    <li>@treat.Name <br> &emsp;-@treat.Description</li>
   }
 </ul>
 <br>
-<h4>Flavors</h4>
+<h4>@Html.ActionLink("Flavors", "Index", "Treats")</h4>
 @if (ViewBag.Flavors.Count == 0)
 {
   <p>No flavors have been added yet!</p>

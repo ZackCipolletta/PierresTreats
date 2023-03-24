@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresTreats.Models;
+@model PierresTreats.Models.Flavor
+
+<h1 class="text-center">Edit this flavor</h1>
+<hr>
+<h4>Name: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.LabelFor(model => model.Name)<br>
+  @Html.EditorFor(model => model.Name)<br><p></p>
+  @Html.LabelFor(model => model.Details)<br>
+  <p class="mb-0">@Html.EditorFor(model => model.Details)</p><p></p>
+  <p class="mb-0">@Html.LabelFor(model => model.Status)</p>
+  <p class="mb-0">@Html.DropDownListFor(model => model.Status, new SelectList(Enum.GetValues(typeof(FlavorStatus))), "Select Status")</p>
+  <input type="submit"  value="Save" class="btn btn-primary" />
+  <br>
+  <br>
+  
+  <ul>
+    @foreach(FlavorMachine join in Model.JoinEntities)
+      {
+        <li>@join.Machine.Name
+        @using (Html.BeginForm("DeleteJoin", "Flavors"))
+        {
+          @Html.Hidden("joinId", @join.FlavorMachineId)
+          <input type="submit" class="btn btn-primary"  value="Delete"/>
+        }
+        </li>
+      }
+  </ul>
+}
+<br>
+<hr class="my-2">
+<p class="nav">@Html.ActionLink("Back to list", "Index")</p>

@@ -19,6 +19,26 @@ namespace PierresTreats.Controllers
     {
       return View(_db.Treats.ToList());
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
     
+
+    [HttpPost]
+    public ActionResult Create(Treat treat)
+    {
+    //   if (ModelState.IsValid)
+    //   {
+        _db.Treats.Add(treat);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    //   }
+    //   else
+    //   {
+    //     return View("Create");
+    //   }
+    }
   }
 }

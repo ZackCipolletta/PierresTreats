@@ -1,0 +1,30 @@
+body {
+	background-image: url('../img/Factory.jpeg');
+	background-color: rgb(3, 3, 3);
+	color: rgb(255, 255, 255);
+	font-weight: bolder;
+		font-size: larger;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 125%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	
+}
+
+div#footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	color: #CCC;
+	background: #333333;
+	padding: 8px;
+}
+
+.container{
+	max-width: 850px;
+	/* background-color: rgba(52, 121, 153, 0.61); */
+}
