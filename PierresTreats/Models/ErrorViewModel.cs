@@ -1,4 +1,4 @@
-namespace PierresSweetandSavoryTreats.Models;
+namespace PierresTreats.Models;
 
 public class ErrorViewModel
 {

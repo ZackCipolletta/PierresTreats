@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using PierresSweetandSavoryTreats.Models;
+using PierresTreats.Models;
 
-namespace PierresSweetandSavoryTreats.Controllers;
+namespace PierresTreats.Controllers;
 
 public class HomeController : Controller
 {
