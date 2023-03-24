@@ -32,6 +32,26 @@
       }
   </ul>
 }
+
+<h4>Add a Treat to: @Html.DisplayFor(model => model.Name)</h4>
+<br>
+@using (Html.BeginForm("AddFlavor", "Flavors"))
+{
+  if((int)@ViewBag.TreatCount == 0)
+  {
+    <p>No treats have been added yet!</p>
+  }
+  else
+  {
+    @Html.HiddenFor(model => model.FlavorId)
+
+    @Html.Label("Select treat")<br>
+    <p>@Html.DropDownList("TreatId")</p>
+
+    <input type="submit" class="btn btn-primary" value="Save" />
+  }
+}
+
 <br>
 <hr class="my-2">
 <p class="nav">@Html.ActionLink("Back to list", "Index")</p>
