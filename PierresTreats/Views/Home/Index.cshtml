@@ -1,8 +1,36 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  Layout = "_Layout";
 }
+<h1 class="text-center">Welcome to Pierre's Sweet and Savory Treats!</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@using PierresTreats.Models
+
+<hr>
+<h4>Treats</h4>
+@if (ViewBag.Treats.Count == 0)
+{
+  <p>No Treats have been added yet!</p>
+} 
+<ul>
+  @foreach (var treat in (List<Treat>)ViewBag.Treats) //<-- casting to List<T> inorder to use the Html.ActionLink below to avoid error CS1973.
+  {
+    <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
+  }
+</ul>
+<br>
+<h4>Flavors</h4>
+@if (ViewBag.Flavors.Count == 0)
+{
+  <p>No flavors have been added yet!</p>
+} 
+<ul>
+  @foreach (Flavor flavor in (List<Flavor>)ViewBag.Flavors) //<-- casting to List<T> inorder to use the Html.ActionLink below to avoid error CS1973.
+  {
+    <li>@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+  }
+</ul>
+<br>
+
+<hr class="my-2">
+<p class="nav" >@Html.ActionLink("Manage treats", "Index", "Treats")</p> 
+<p class="nav" >@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>

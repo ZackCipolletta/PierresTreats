@@ -1,22 +1,31 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PierresTreats.Models;
+using System.Diagnostics;
+using System.Linq;
 
 namespace PierresTreats.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly PierresTreatsContext _db;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(PierresTreatsContext db)
     {
-        _logger = logger;
+      _db = db;
     }
 
-    public IActionResult Index()
+    [HttpGet("/")]
+    public ActionResult Index()
     {
-        return View();
+      ViewBag.Treats = _db.Treats
+                      .ToList();
+      ViewBag.Flavors = _db.Flavors
+                      .ToList();
+      return View();
     }
+
 
     public IActionResult Privacy()
     {
