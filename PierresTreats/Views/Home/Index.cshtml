@@ -5,6 +5,7 @@
 
 @using PierresTreats.Models
 
+
 <hr>
 <h4>@Html.ActionLink("Treats", "Index", "Treats")</h4>
 @if (ViewBag.Treats.Count == 0)
@@ -34,5 +35,40 @@
 <br>
 
 <hr class="my-2">
-<p class="nav" >@Html.ActionLink("Manage treats", "Index", "Treats")</p> 
-<p class="nav" >@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      @if (User.Identity.IsAuthenticated)
+      {
+        <p class="nav">@Html.ActionLink("Manage treats", "Index", "Treats")</p>
+        <p class="nav">@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
+      }
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center">
+      @if (User.Identity.IsAuthenticated)
+      {
+        <div>
+          <span style="font-size: 85%">logged in as:</span>
+          <br />
+          <span class="highlighted">@User.Identity.Name</span>
+        </div>
+        <div style="margin-left: 10px">
+          @using (Html.BeginForm("LogOff", "Account"))
+          {
+            <button type="submit" class="logout">Log out</button>
+          }
+        </div>
+      }
+      else
+      {
+        <a href='@Url.Action("Register", "Account")'>
+          <button class="login register">Register</button>
+        </a>
+        <a href='@Url.Action("Login", "Account")'>
+          <button class="login">Log in</button>
+        </a>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+using PierresTreats.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
+
+public class MyCustomTagHelper: TagHelper
+{
+  public overrride void Process(TagHelperContext context, TagHeperOutput output)
+  {
+    output.TagName = "CustomerSectionTagHelper";
+    output.TagMode = TagMode.StartTagAndEndTag;  
+  
+    var sb = new StringBuilder();  
+    sb.AppendFormat("Customer Name: {0}", this.customerName);  
+    output.PreContent.SetHtmlContent(sb.ToString());
+
+  }
+}

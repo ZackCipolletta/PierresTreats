@@ -11,10 +11,20 @@
   <h3>No flavors have been added yet!</h3>
 }
 <ul>
-@foreach (Flavor flavor in Model)
-{
-  <li>@Html.ActionLink($"{flavor.Name} Treats", "Details", new { id = flavor.FlavorId }) @Html.ActionLink("Edit", "Edit", "Flavors", new { id = flavor.FlavorId }) @Html.ActionLink("Delete Flavor", "Delete", "Flavors", new { id = flavor.FlavorId })</li>
-}
+  @if (User.Identity.IsAuthenticated)
+    {
+      @foreach (Flavor flavor in Model)
+      {
+        <li>@Html.ActionLink($"{flavor.Name} Treats", "Details", new { id = flavor.FlavorId }) @Html.ActionLink("Edit", "Edit", "Flavors", new { id = flavor.FlavorId }) @Html.ActionLink("Delete Flavor", "Delete", "Flavors", new { id = flavor.FlavorId })</li>
+      }
+    }
+    else
+    {
+      @foreach (Flavor flavor in Model)
+      {
+      <li>@Html.ActionLink($"{flavor.Name} Treats", "Details", new { id = flavor.FlavorId })</li>
+      }
+    }
 </ul>
 <br>
 

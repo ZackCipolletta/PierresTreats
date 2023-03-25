@@ -116,21 +116,3 @@ namespace PierresTreats.Controllers
 }
 
 
-		// public async Task<IActionResult> Update(string id)
-		// {
-		//     IdentityRole role = await roleManager.FindByIdAsync(id);
-		//     List<ApplicationUser> members = _db.UserRoles.Where(role => role.id == id);
-		//     new List<ApplicationUser>();
-		//     List<ApplicationUser> nonMembers = new List<ApplicationUser>();
-		//     foreach (ApplicationUser user in userManager.Users)
-		//     {
-		//         var list = await userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
-		//         list.Add(user);
-		//     }
-		//     return View(new RoleEdit
-		//     {
-		//         Role = role,
-		//         Members = members,
-		//         NonMembers = nonMembers
-		//     });
-		// }

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PierresTreats.Controllers
 {
+  [Authorize(Roles = "Admin")]
   public class FlavorsController : Controller
   {
     private readonly PierresTreatsContext _db;
@@ -15,6 +17,7 @@ namespace PierresTreats.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Flavors.ToList());
@@ -102,7 +105,9 @@ namespace PierresTreats.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    
 
+    [AllowAnonymous]
         public ActionResult Details(int id)
     {
       Flavor thisFlavor = _db.Flavors
