@@ -2,18 +2,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using LibraryCatalog.Models;
+using PierresTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LibraryCatalog.Controllers
+namespace PierresTreats.Controllers
 {
 	public class RoleController : Controller
 	{
 		private RoleManager<IdentityRole> roleManager;
 		private UserManager<ApplicationUser> userManager;
-		private LibraryCatalogContext _db;
-		public RoleController(RoleManager<IdentityRole> roleMgr, UserManager<ApplicationUser> userMrg, LibraryCatalogContext db)
+		private PierresTreatsContext _db;
+		public RoleController(RoleManager<IdentityRole> roleMgr, UserManager<ApplicationUser> userMrg, PierresTreatsContext db)
 		
 		{
 				roleManager = roleMgr;
