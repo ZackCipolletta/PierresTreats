@@ -1,33 +1,31 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
-@using Factory.Models
-@model Factory.Models.Engineer
+@using PierresTreats.Models
+@model PierresTreats.Models.Flavor
 
-<h1 class="text-center">Engineer Details</h1>
+<h1 class="text-center">Flavor Description</h1>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<p>@Html.DisplayNameFor(model => model.Details): @Html.DisplayFor(model => model.Details)</p>
-<p>@Html.DisplayNameFor(model => model.Status): @Html.DisplayFor(model => model.Status)</p>
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This engineer is not licensed to repair any any machines.</p>
+  <p>There are no treats with this flavor</p>
 }
 else
 {
-  <h4>This engineer is licensed to repair these machines:</h4>
+  <h4>Here are all the treats of this flavor:</h4>
   <ul>
-  @foreach(EngineerMachine join in Model.JoinEntities)
+  @foreach(FlavorTreat join in Model.JoinEntities)
   {
-    <li>Name: @Html.ActionLink(@join.Machine.Name, "Details", "Machines", new{id = @join.Machine.MachineId})</li>
+    <li>Name: @Html.ActionLink(@join.Treat.Name, "Description", "Treats", new{id = @join.Treat.TreatId})</li>
   }
   </ul>
 }
 <br>
 <hr class="my-2">
 <p class="nav">@Html.ActionLink("Back to list", "Index")</p>
-<p class="nav">@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.EngineerId })</p>
-<p class="nav">@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
-<p class="nav">@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p> *@
+<p class="nav">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
+<p class="nav">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
