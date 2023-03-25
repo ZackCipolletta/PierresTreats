@@ -16,7 +16,7 @@
   @Html.LabelFor(model => model.Name)<br>
   @Html.EditorFor(model => model.Name)<br><p></p>
   @Html.LabelFor(model => model.Description)<br>
-  <p class="mb-0">@Html.EditorFor(model => model.Description)</p>
+  @Html.EditorFor(model => model.Description)<br><p></p>
   <input type="submit"  value="Save" class="btn btn-primary" />
   <br>
   <br>
@@ -34,6 +34,28 @@
       }
   </ul>
 }
+
+<h4>Add a Flavor to: @Html.DisplayFor(model => model.Name)</h4>
+<br>
+@using (Html.BeginForm("AddFlavor", "Treats"))
+{
+
+  @Html.HiddenFor(model => model.TreatId)
+  if((int)@ViewBag.FlavorCount == 0)
+  {
+    <p>No flavors have been added yet!</p>
+  }
+  else
+  {
+    @Html.HiddenFor(model => model.TreatId)
+
+    @Html.Label("Select flavor")<br>
+    <p>@Html.DropDownList("FlavorId")</p>
+
+    <input type="submit" class="btn btn-primary" value="Save" />
+  }
+}
+
 <br>
 <hr class="my-2">
 <p class="nav">@Html.ActionLink("Back to list", "Index")</p>

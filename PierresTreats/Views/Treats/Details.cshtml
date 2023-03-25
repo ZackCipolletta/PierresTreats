@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresTreats.Models
+@model PierresTreats.Models.Treat
+
+<h1 class="text-center">Treat Description</h1>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This treat is not licensed to repair any any machines.</p>
+}
+else
+{
+  <h4>This treat is licensed to repair these machines:</h4>
+  <ul>
+  @foreach(FlavorTreat join in Model.JoinEntities)
+  {
+    <li>Name: @Html.ActionLink(@join.Flavor.Name, "Description", "Flavors", new{id = @join.Flavor.FlavorId})</li>
+  }
+  </ul>
+}
+<br>
+<hr class="my-2">
+<p class="nav">@Html.ActionLink("Back to list", "Index")</p>
+<p class="nav">@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>
+<p class="nav">@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+<p class="nav">@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>

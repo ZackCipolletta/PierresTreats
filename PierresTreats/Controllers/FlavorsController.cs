@@ -47,11 +47,8 @@ namespace PierresTreats.Controllers
                               .Include(Flavor => Flavor.JoinEntities)
                               .ThenInclude(join => join.Treat)
                               .FirstOrDefault(flavors => flavors.FlavorId == id);
-      
-              List<FlavorTreat> joins = Flavor.JoinEntities.ToList();
-              // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
-              // ViewBag.TreatCount = ((SelectList)ViewBag.TreatId).Count();
-              ViewBag.Joins = joins;
+              ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+              ViewBag.TreatCount = ((SelectList)ViewBag.TreatId).Count();
       return View(thisFlavor);
     }
 
