@@ -51,7 +51,7 @@
         <div>
           <span style="font-size: 85%">logged in as:</span>
           <br />
-          <span class="highlighted">@User.Identity.Name</span>
+          <span class="highlighted"><a href='@Url.Action("Index", "Account")'>@User.Identity.Name</a></span>
         </div>
         <div style="margin-left: 10px">
           @using (Html.BeginForm("LogOff", "Account"))
