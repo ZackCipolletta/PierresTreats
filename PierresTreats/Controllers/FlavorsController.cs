@@ -47,9 +47,11 @@ namespace PierresTreats.Controllers
                               .Include(Flavor => Flavor.JoinEntities)
                               .ThenInclude(join => join.Treat)
                               .FirstOrDefault(flavors => flavors.FlavorId == id);
-
-              ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
-              ViewBag.TreatCount = ((SelectList)ViewBag.TreatId).Count();
+      
+              List<FlavorTreat> joins = Flavor.JoinEntities.ToList();
+              // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+              // ViewBag.TreatCount = ((SelectList)ViewBag.TreatId).Count();
+              ViewBag.Joins = joins;
       return View(thisFlavor);
     }
 
@@ -83,7 +85,7 @@ namespace PierresTreats.Controllers
       FlavorTreat joinEntity = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
         _db.FlavorTreats.Remove(joinEntity);
         _db.SaveChanges();
-      return RedirectToAction("Edit", new { id = joinEntity.FlavorId });
+      return RedirectToAction("Index");
     }
   }
 }
