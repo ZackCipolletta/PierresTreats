@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PierresTreats.Models;
 using System.Diagnostics;
-using System.Linq;
 
 namespace PierresTreats.Controllers;
 

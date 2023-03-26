@@ -1,13 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using PierresTreats.Models;
-using System.Threading.Tasks;
 using PierresTreats.ViewModels;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using System;
 
 namespace PierresTreats.Controllers
 {

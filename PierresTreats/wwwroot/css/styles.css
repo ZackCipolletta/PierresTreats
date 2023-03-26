@@ -1,7 +1,8 @@
 body {
-	background-image: url('../img/Factory.jpeg');
+	background-image: url('../Img/honey-fangs--JU0sqGjeC0-unsplash.jpg');
 	background-color: rgb(3, 3, 3);
-	color: rgb(255, 255, 255);
+	/* color: rgb(236, 163, 98); */
+	color: rgb(156, 77, 8);
 	font-weight: bolder;
 		font-size: larger;
 	background-repeat: no-repeat;
@@ -24,7 +25,46 @@ div#footer {
 	padding: 8px;
 }
 
+body{
+	--stroke-color: rgb(53, 35, 19);
+	--stroke-width: 1px;
+	color: rgb(250, 243, 238);
+	text-shadow: 
+		0.75px 0.75px var(--stroke-width) var(--stroke-color),
+		-0.75px 0.75px var(--stroke-width)var(--stroke-color),
+		-0.75px -0.75px var(--stroke-width) var(--stroke-color),
+		0.7px -0.75px var(--stroke-width) var(--stroke-color)
+	;
+}
+
 .container{
 	max-width: 850px;
-	/* background-color: rgba(52, 121, 153, 0.61); */
+	/* background-color: rgba(44, 35, 37, 0.425); */
+	background-color: rgba(220, 153, 94, 0.274);
 }
+
+a{
+	--stroke-color: rgba(54, 40, 14, 0.521);
+	--stroke-width: 1px;
+	color: rgb(255, 171, 16);
+	text-shadow: 
+	0.75px 0.75px var(--stroke-width) var(--stroke-color),
+	-0.75px 0.75px var(--stroke-width)var(--stroke-color),
+	-0.75px -0.75px var(--stroke-width) var(--stroke-color),
+	0.7px -0.75px var(--stroke-width) var(--stroke-color)
+}
+
+--raisin-black: #372E30ff;
+--seal-brown: #703722ff;
+--black-bean: #2E1312ff;
+--persian-orange: #DC985Eff;
+--licorice: #1C0D0Eff;
+
+
+
+/* CSS HEX */
+--khaki: #A79D8Eff;
+--bronze: #C08B47ff;
+--russet: #7A380Eff;
+--coffee: #70442Eff;
+--satin-sheen-gold: #CEA457ff;
