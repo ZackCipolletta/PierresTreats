@@ -29,6 +29,8 @@
 <br>
 
 <hr class="my-2">
-<p class="nav">@Html.ActionLink("Add new flavor", "Create")</p>
+  @if (User.Identity.IsAuthenticated)
+    {
+      <p class="nav">@Html.ActionLink("Add new flavor", "Create")</p>
+    }
 <p class="nav">@Html.ActionLink("Home", "Index", "Home")</p>
-@* <p class="nav">@Html.ActionLink("Add new engineer", "Create")</p> *@

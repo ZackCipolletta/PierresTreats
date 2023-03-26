@@ -27,5 +27,8 @@ else
 <br>
 <hr class="my-2">
 <p class="nav">@Html.ActionLink("Back to list", "Index")</p>
-<p class="nav">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-<p class="nav">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
+  @if (User.Identity.IsAuthenticated)
+    {
+      <p class="nav">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
+      <p class="nav">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
+    }

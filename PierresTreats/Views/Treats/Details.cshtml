@@ -27,5 +27,9 @@ else
 <br>
 <hr class="my-2">
 <p class="nav">@Html.ActionLink("Back to list", "Index")</p>
-<p class="nav">@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
-<p class="nav">@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
+
+  @if (User.Identity.IsAuthenticated)
+    {
+      <p class="nav">@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+      <p class="nav">@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
+    }
