@@ -31,16 +31,16 @@ namespace PierresTreats.Controllers
     [HttpPost]
     public ActionResult Create(Treat treat)
     {
-    //   if (ModelState.IsValid)
-    //   {
+      if (ModelState.IsValid)
+      {
         _db.Treats.Add(treat);
         _db.SaveChanges();
         return RedirectToAction("Index");
-    //   }
-    //   else
-    //   {
-    //     return View("Create");
-    //   }
+      }
+      else
+      {
+        return View("Create");
+      }
     }
 
         public ActionResult Edit(int id)
@@ -57,9 +57,9 @@ namespace PierresTreats.Controllers
     [HttpPost]
     public ActionResult Edit(Treat treat)
     {
-      _db.Treats.Update(treat);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+        _db.Treats.Update(treat);
+        _db.SaveChanges();
+        return RedirectToAction("Edit");
     }
 
 [HttpPost]

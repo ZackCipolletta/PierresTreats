@@ -29,16 +29,16 @@ namespace PierresTreats.Controllers
     [HttpPost]
     public ActionResult Create(Flavor flavor)
     {
-    //   if (ModelState.IsValid)
-    //   {
+      if (ModelState.IsValid)
+      {
         _db.Flavors.Add(flavor);
         _db.SaveChanges();
         return RedirectToAction("Index");
-    //   }
-    //   else
-    //   {
-    //     return View("Create");
-    //   }
+      }
+      else
+      {
+        return View("Create");
+      }
     }
 
 

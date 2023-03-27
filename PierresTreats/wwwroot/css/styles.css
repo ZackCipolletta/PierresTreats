@@ -54,17 +54,6 @@ a{
 	0.7px -0.75px var(--stroke-width) var(--stroke-color)
 }
 
---raisin-black: #372E30ff;
---seal-brown: #703722ff;
---black-bean: #2E1312ff;
---persian-orange: #DC985Eff;
---licorice: #1C0D0Eff;
-
-
-
-/* CSS HEX */
---khaki: #A79D8Eff;
---bronze: #C08B47ff;
---russet: #7A380Eff;
---coffee: #70442Eff;
---satin-sheen-gold: #CEA457ff;
+table td {
+  color: white;
+}
