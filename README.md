@@ -1,4 +1,4 @@
-# Dr. Sillystringz's Factory
+# Dr. Pierre's Treats
 
 #### A web application using .NET Core MVC, SQL databases, EF Core, many to many relationships, C# classes, methods, auto-implemented properties and Identity with authorization and authentication.
 
@@ -17,7 +17,7 @@
 * Authentication & Authorization
 
 ## Description
-This web application was created fora bake shop to be able to show users the various different baked treats and flavors the shop has to offer. The site Allows users to see lists of both flavors and treats available. Users are also able to browse each individual treat or flavor and see what flavors a given treat is available in or what treats are available for a given flavor.  Users can register to log into the site and see the buttons to create or delete new items, but only users in the 'Admin' role are able to actually make modifications.
+This web application was created for a bake shop to be able to show users the various different baked treats and flavors the shop has to offer. The site Allows users to see lists of both flavors and treats available. Users are also able to browse each individual treat or flavor and see what flavors a given treat is available in or what treats are available for a given flavor.  Users can register to log into the site and see the buttons to create or delete new items, but only users in the 'Admin' role are able to actually make modifications.
 
 ## Setup/Installation Requirements
 
