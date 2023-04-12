@@ -1,4 +1,4 @@
-# Dr. Pierre's Treats
+# Pierre's Treats
 
 #### A web application using .NET Core MVC, SQL databases, EF Core, many to many relationships, C# classes, methods, auto-implemented properties and Identity with authorization and authentication.
 
