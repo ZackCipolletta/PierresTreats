@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PierresTreats.Controllers
 {
-  
+
   [Authorize(Roles = "Admin")]
   public class TreatsController : Controller
   {
@@ -26,7 +26,7 @@ namespace PierresTreats.Controllers
     {
       return View();
     }
-    
+
 
     [HttpPost]
     public ActionResult Create(Treat treat)
@@ -43,30 +43,32 @@ namespace PierresTreats.Controllers
       }
     }
 
-        public ActionResult Edit(int id)
+    [Authorize]
+    public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats
                               .Include(Treat => Treat.JoinEntities)
                               .ThenInclude(join => join.Flavor)
                               .FirstOrDefault(treats => treats.TreatId == id);
-              ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
-              ViewBag.FlavorCount = ((SelectList)ViewBag.FlavorId).Count();
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+      ViewBag.FlavorCount = ((SelectList)ViewBag.FlavorId).Count();
       return View(thisTreat);
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult Edit(Treat treat)
     {
-        _db.Treats.Update(treat);
-        _db.SaveChanges();
-        return RedirectToAction("Edit");
+      _db.Treats.Update(treat);
+      _db.SaveChanges();
+      return RedirectToAction("Edit");
     }
 
-[HttpPost]
+    [HttpPost]
     public ActionResult AddFlavor(Treat treat, int flavorId)
     {
 #nullable enable
-      treat = _db.Treats.FirstOrDefault(t => t.TreatId == treat.TreatId);  
+      treat = _db.Treats.FirstOrDefault(t => t.TreatId == treat.TreatId);
       FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
 #nullable disable
       if (joinEntity == null && flavorId != 0)
@@ -82,12 +84,12 @@ namespace PierresTreats.Controllers
     public ActionResult DeleteJoin(int joinId)
     {
       FlavorTreat joinEntity = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
-        _db.FlavorTreats.Remove(joinEntity);
-        _db.SaveChanges();
+      _db.FlavorTreats.Remove(joinEntity);
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
-      public ActionResult Delete(int id)
+    public ActionResult Delete(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
       return View(thisTreat);

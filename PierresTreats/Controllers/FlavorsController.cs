@@ -42,6 +42,7 @@ namespace PierresTreats.Controllers
     }
 
 
+  [Authorize]
     public ActionResult Edit(int id)
     {
       Flavor thisFlavor = _db.Flavors
@@ -54,6 +55,7 @@ namespace PierresTreats.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult Edit(Flavor flavor)
     {
       _db.Flavors.Update(flavor);
