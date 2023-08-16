@@ -43,7 +43,6 @@ namespace PierresTreats.Controllers
       }
     }
 
-    [Authorize]
     public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats
@@ -56,7 +55,6 @@ namespace PierresTreats.Controllers
     }
 
     [HttpPost]
-    [Authorize]
     public ActionResult Edit(Treat treat)
     {
       _db.Treats.Update(treat);
